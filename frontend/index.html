@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Meenatchi Textile Store – Quality Fabrics, Trusted for Generations</title>
+    <meta name="description" content="Meenatchi Textile Store – Premium South Indian textiles, sarees, ethnic wear for the whole family. Trusted since 1999.">
+    <meta name="keywords" content="sarees, silk sarees, Kanjivaram, Tamil Nadu textiles, ethnic wear, Meenatchi Textile">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════
+     ANNOUNCEMENT BAR
+═══════════════════════════════════════════════ -->
+    <div class="announce-bar" id="announceBar">
+        <span class="announce-text">✦ FREE SHIPPING on orders above ₹999 &nbsp;|&nbsp; Use code
+            <strong>FESTIVE20</strong> for 20% off &nbsp;|&nbsp; New Kanjivaram Collection Just Arrived ✦</span>
+        <button class="announce-close" onclick="document.getElementById('announceBar').style.display='none'">✕</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════ -->
+    <header class="header" id="mainHeader">
+        <div class="header-top">
+            <div class="logo-block" style="cursor:pointer" onclick="showPage('home')">
+                <div class="logo-name">✦Sri Meenatchi Textile Store ✦</div>
+                <div class="logo-tag">Quality Fabrics, Trusted for Generations</div>
+            </div>
+            <div class="header-search">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" placeholder="Search sarees, fabrics, ethnic wear..." id="searchInput" oninput="handleSearch(this.value)" onfocus="openSearch()">
+            </div>
+            <div class="header-actions">
+                <button class="haction" onclick="openSearch()" title="Search">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                </button>
+                <button class="haction" onclick="showPage('wishlist')" title="Wishlist">
+                    <span>♡</span>
+                    <span class="badge" id="wishBadge" style="display:none">0</span>
+                </button>
+                <button class="haction" onclick="openAuth()" title="Account">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                </button>
+                <button class="haction" onclick="openCart()" title="Cart">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+                <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode"></div>
+                <div class="hamburger" onclick="openDrawer()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="nav-inner">
+                <span class="nav-link active" onclick="showPage('home')">Home</span>
+                <span class="nav-link" onclick="showPage('about')">About Us</span>
+                <div class="nav-drop">
+                    <span class="nav-link">Categories <span class="chevron">▾</span></span>
+                    <div class="drop-menu">
+                        <div class="drop-item" onclick="showPage('shop','Women\'s Section')"><span class="drop-item-icon">👗</span>Women's Section</div>
+                        <div class="drop-item" onclick="showPage('shop','Men\'s Section')"><span class="drop-item-icon">👔</span>Men's Section</div>
+                        <div class="drop-item" onclick="showPage('shop','Kids Section')"><span class="drop-item-icon">🧒</span>Kids Section</div>
+                        <div class="drop-item" onclick="showPage('shop','Sports Section')"><span class="drop-item-icon">⚽</span>Sports Section</div>
+                        <div class="drop-item" onclick="showPage('shop','Ethnic Wear')"><span class="drop-item-icon">🥻</span>Ethnic Wear</div>
+                        <div class="drop-item" onclick="showPage('shop','Fabrics')"><span class="drop-item-icon">🧵</span>Fabrics</div>
+                        <div class="drop-item" onclick="showPage('shop','Accessories')"><span class="drop-item-icon">👜</span>Accessories</div>
+                    </div>
+                </div>
+                <span class="nav-link" onclick="showPage('offers')">Offers</span>
+                <span class="nav-link" onclick="showPage('gallery')">Gallery</span>
+                <span class="nav-link" onclick="showPage('blog')">Blog</span>
+                <span class="nav-link" onclick="showPage('contact')">Contact Us</span>
+                <span class="nav-link" onclick="showPage('track')">Track Orders</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════
+     MOBILE DRAWER
+═══════════════════════════════════════════════ -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeDrawer()"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="logo-name" style="font-size:1rem">✦Sri Meenatchi Textile</div>
+            <button class="drawer-close" onclick="closeDrawer()">✕</button>
+        </div>
+        <a class="drawer-link" onclick="showPage('home');closeDrawer()">🏠 Home</a>
+        <a class="drawer-link" onclick="showPage('about');closeDrawer()">ℹ️ About Us</a>
+        <a class="drawer-link" onclick="showPage('shop','Women\'s Section');closeDrawer()">👗 Women's Section</a>
+        <a class="drawer-link" onclick="showPage('shop','Men\'s Section');closeDrawer()">👔 Men's Section</a>
+        <a class="drawer-link" onclick="showPage('shop','Kids Section');closeDrawer()">🧒 Kids Section</a>
+        <a class="drawer-link" onclick="showPage('shop','Sports Section');closeDrawer()">⚽ Sports Section</a>
+        <a class="drawer-link" onclick="showPage('shop','Ethnic Wear');closeDrawer()">🥻 Ethnic Wear</a>
+        <a class="drawer-link" onclick="showPage('shop','Fabrics');closeDrawer()">🧵 Fabrics</a>
+        <a class="drawer-link" onclick="showPage('shop','Accessories');closeDrawer()">👜 Accessories</a>
+        <a class="drawer-link" onclick="showPage('offers');closeDrawer()">🎉 Offers</a>
+        <a class="drawer-link" onclick="showPage('gallery');closeDrawer()">🖼️ Gallery</a>
+        <a class="drawer-link" onclick="showPage('contact');closeDrawer()">📍 Contact Us</a>
+        <a class="drawer-link" onclick="showPage('track');closeDrawer()">📦 Track Orders</a>
+        <a class="drawer-link" onclick="openAuth();closeDrawer()">👤 Login / Register</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     SEARCH OVERLAY
+═══════════════════════════════════════════════ -->
+    <div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
+        <div class="search-box" onclick="event.stopPropagation()">
+            <div style="display:flex;align-items:center;gap:.8rem">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--ts);flex-shrink:0">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input class="search-input-big" placeholder="Search for sarees, fabrics, kurtas..." id="searchBig" oninput="handleSearch(this.value)" autofocus>
+                <button onclick="closeSearch()" style="background:none;font-size:1.4rem;color:var(--ts);cursor:pointer">✕</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+            <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--cdd)">
+                <p style="font-size:.72rem;color:var(--ts);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem">
+                    Popular Searches</p>
+                <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+                    <span onclick="handleSearch('Kanjivaram')" style="background:var(--cd);color:var(--ts);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;cursor:pointer">Kanjivaram
+                        Saree</span>
+                    <span onclick="handleSearch('Cotton Saree')" style="background:var(--cd);color:var(--ts);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;cursor:pointer">Cotton
+                        Sarees</span>
+                    <span onclick="handleSearch('Kurta')" style="background:var(--cd);color:var(--ts);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;cursor:pointer">Men's
+                        Kurta</span>
+                    <span onclick="handleSearch('Kids')" style="background:var(--cd);color:var(--ts);font-size:.75rem;padding:.3rem .8rem;border-radius:20px;cursor:pointer">Kids
+                        Wear</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     CART DRAWER
+═══════════════════════════════════════════════ -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-head">
+            <div class="cart-head-title">🛒 Shopping Cart</div>
+            <button class="cart-close" onclick="closeCart()">✕</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="cart-empty" id="cartEmpty">
+                <div class="cart-empty-icon">🛍️</div>
+                <p style="font-size:.9rem;color:var(--ts);margin-bottom:1rem">Your cart is empty</p>
+                <button class="btn-gold" onclick="closeCart();showPage('shop')" style="font-size:.7rem;padding:.7rem 1.5rem">Start Shopping</button>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-coupon" id="cartCoupon" style="display:none">
+                <p style="font-size:.78rem;font-weight:600;color:var(--tm)">🎫 Have a Coupon?</p>
+                <div class="cart-coupon-form">
+                    <input class="coupon-input" placeholder="Enter code (try FESTIVE20)" id="couponInput">
+                    <button class="coupon-apply" onclick="applyCoupon()">Apply</button>
+                </div>
+                <p id="couponMsg" style="font-size:.72rem;margin-top:.4rem;color:var(--g)"></p>
+            </div>
+        </div>
+        <div class="cart-foot" id="cartFoot" style="display:none">
+            <div class="cart-summary-row"><span>Subtotal</span><span id="csub">₹0</span></div>
+            <div class="cart-summary-row"><span>Discount</span><span id="cdisc" style="color:#2d8a4e">-₹0</span></div>
+            <div class="cart-summary-row"><span>Shipping</span><span id="cship">₹50</span></div>
+            <div class="cart-summary-row"><span>GST (5%)</span><span id="cgst">₹0</span></div>
+            <div class="cart-summary-row total"><span>Total</span><span id="ctotal" style="color:var(--m)">₹0</span>
+            </div>
+            <button class="cart-checkout" onclick="closeCart();showPage('checkout')">Proceed to Checkout →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     QUICK VIEW MODAL
+═══════════════════════════════════════════════ -->
+    <div class="modal-overlay" id="quickModal" onclick="closeQuick(event)">
+        <div class="product-modal" onclick="event.stopPropagation()" style="position:relative">
+            <div class="pm-grid" id="quickContent"></div>
+            <div class="pm-close" onclick="closeQuick()">✕</div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     AUTH MODAL
+═══════════════════════════════════════════════ -->
+    <div class="auth-overlay" id="authOverlay" onclick="closeAuth(event)">
+        <div class="auth-modal" onclick="event.stopPropagation()" style="position:relative">
+            <button onclick="closeAuth()" style="position:absolute;top:1rem;right:1rem;background:none;font-size:1.3rem;color:var(--ts);cursor:pointer">✕</button>
+            <div class="auth-modal-logo"><span class="logo-name">✦ Meenatchi Textiles ✦</span></div>
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchAuthTab('login',this)">Login</div>
+                <div class="auth-tab" onclick="switchAuthTab('register',this)">Register</div>
+            </div>
+            <div id="loginForm">
+                <div class="auth-field">
+                    <label class="auth-label">Email Address</label>
+                    <input id="loginEmail" class="auth-input" type="email" placeholder="you@example.com">
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label">Password</label>
+                    <input id="loginPassword" class="auth-input" type="password" placeholder="••••••••">
+                </div>
+                <div class="auth-forgot">Forgot password?</div>
+                <button class="auth-submit" onclick="handleLogin()">Login to Your Account</button>
+                <div class="auth-divider">or continue with</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                    <button style="padding:.7rem;border:1px solid var(--cdd);border-radius:var(--r8);background:var(--w);font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--td)">🇬
+                        Google</button>
+                    <button style="padding:.7rem;border:1px solid var(--cdd);border-radius:var(--r8);background:var(--w);font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--td)">📘
+                        Facebook</button>
+                </div>
+            </div>
+            <div id="registerForm" style="display:none">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                    <div class="auth-field"><label class="auth-label">First Name</label><input id="regFirstName" class="auth-input" type="text" placeholder="your first name "></div>
+                    <div class="auth-field"><label class="auth-label">Last Name</label><input id="regLastName" class="auth-input" type="text" placeholder="your last name"></div>
+                </div>
+                <div class="auth-field"><label class="auth-label">Email Address</label><input id="regEmail" class="auth-input" type="email" placeholder="you@example.com"></div>
+                <div class="auth-field"><label class="auth-label">Phone Number</label><input id="regPhone" class="auth-input" type="tel" placeholder="+91 *********"></div>
+                <div class="auth-field"><label class="auth-label">Password</label><input id="regPassword" class="auth-input" type="password" placeholder="Create a strong password"></div>
+                <button class="auth-submit" onclick="handleRegister()">Create Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     NOTIFICATION TOAST
+═══════════════════════════════════════════════ -->
+    <div class="notif" id="notif">
+        <span class="notif-icon" id="notifIcon">✅</span>
+        <span id="notifMsg">Item added to cart!</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     WHATSAPP BUTTON
+═══════════════════════════════════════════════ -->
+    <a class="wa-btn" href="https://wa.me/919042045350?text=Hi%20Meenatchi%20Textile%20Store%2C%20I%20want%20to%20know%20more%20about%20your%20products!" target="_blank">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+        </svg>
+        <div class="wa-tooltip">Chat with us on WhatsApp!</div>
+    </a>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════ -->
+    <div id="page-home" class="page-section active-page">
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-slide active" id="hslide0">
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1800&q=80" alt="Textile Hero 1">
+                <div class="hero-ov"></div>
+            </div>
+            <div class="hero-slide" id="hslide1" style="opacity:0;position:absolute;inset:0">
+                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1800&q=80" alt="Textile Hero 2">
+                <div class="hero-ov"></div>
+            </div>
+            <div class="hero-slide" id="hslide2" style="opacity:0;position:absolute;inset:0">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1800&q=80" alt="Textile Hero 3">
+                <div class="hero-ov"></div>
+            </div>
+            <div class="hero-pattern"></div>
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <div class="hero-dot"></div>
+                    South India's Premier Family Textile Destination
+                    <div class="hero-dot"></div>
+                </div>
+                <h1 class="hero-title">Welcome to<br><span> Meenatchi</span> Textile Store</h1>
+                <p class="hero-sub">A Complete Family Store for All Your Needs — Silk to Cotton, Tradition to Trend</p>
+                <div class="hero-ctas">
+                    <button class="btn-gold" onclick="showPage('shop')">✦ Shop Now</button>
+                    <button class="btn-ghost" onclick="showPage('about')">Our Heritage →</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hstat-n">15+</div>
+                        <div class="hstat-l">Years of Trust</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hstat-n">50k+</div>
+                        <div class="hstat-l">Happy Families</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hstat-n">500+</div>
+                        <div class="hstat-l">Collections</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hstat-n">4.9★</div>
+                        <div class="hstat-l">Customer Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-dots" id="heroDots">
+                <div class="hdot active" onclick="goSlide(0)"></div>
+                <div class="hdot" onclick="goSlide(1)"></div>
+                <div class="hdot" onclick="goSlide(2)"></div>
+            </div>
+            <div class="hero-arrow" onclick="document.getElementById('featBar').scrollIntoView({behavior:'smooth'})">
+                <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- FEATURE BAR -->
+        <div class="feat-bar" id="featBar">
+            <div class="feat-grid">
+                <div class="feat-item">
+                    <div class="feat-icon">🚚</div>
+                    <div class="feat-text">
+                        <div class="feat-name">Free Shipping</div>
+                        <div class="feat-desc">On orders above ₹999</div>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">↩️</div>
+                    <div class="feat-text">
+                        <div class="feat-name">Easy Returns</div>
+                        <div class="feat-desc">7-day hassle-free</div>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">🔒</div>
+                    <div class="feat-text">
+                        <div class="feat-name">Secure Payment</div>
+                        <div class="feat-desc">100% safe & encrypted</div>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">💬</div>
+                    <div class="feat-text">
+                        <div class="feat-name">24/7 Support</div>
+                        <div class="feat-desc">Always here for you</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHY CHOOSE US -->
+        <section class="section sec-alt">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Why Choose Us</span>
+                    <h2 class="sec-title">The Meenatchi Promise</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div class="fcard-grid">
+                    <div class="fcard reveal">
+                        <div class="fcard-ico">🧵</div>
+                        <div class="fcard-t">500+ Collections</div>
+                        <div class="fcard-d">From Kanjivaram silks to contemporary fusion — handpicked by our textile experts for every occasion and season.</div>
+                    </div>
+                    <div class="fcard reveal">
+                        <div class="fcard-ico">⭐</div>
+                        <div class="fcard-t">Premium Quality</div>
+                        <div class="fcard-d">Every fabric is sourced directly from master weavers across Tamil Nadu, Andhra Pradesh, and Varanasi.</div>
+                    </div>
+                    <div class="fcard reveal">
+                        <div class="fcard-ico">💛</div>
+                        <div class="fcard-t">Best Prices</div>
+                        <div class="fcard-d">Luxury without the premium price tag. Fair pricing directly from weavers means you save big.</div>
+                    </div>
+                    <div class="fcard reveal">
+                        <div class="fcard-ico">🙏</div>
+                        <div class="fcard-t">Family Trust</div>
+                        <div class="fcard-d">25+ years of trust built on honest service, easy exchanges, and a shopping experience that feels like home.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="section">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Shop by Category</span>
+                    <h2 class="sec-title">Explore Our Collections</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div class="cat-grid" id="catGrid"></div>
+            </div>
+        </section>
+
+        <!-- OFFER BANNERS -->
+        <section class="section sec-alt">
+            <div class="container">
+                <div class="offer-duo reveal">
+                    <div class="offer-ban">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=900&q=75" alt="Festive">
+                        <div class="ob-ov-a"></div>
+                        <div class="ob-circle"></div>
+                        <div class="ob-circle2"></div>
+                        <div class="ob-content">
+                            <div class="ob-badge">✦ Limited Time</div>
+                            <div class="ob-title">Festive<br>Collection</div>
+                            <div class="ob-sub">Special offers for the special you!<br>Celebrate every moment in style.
+                            </div>
+                            <button class="btn-gold" onclick="showPage('shop')" style="font-size:.68rem;padding:.78rem 2rem">Shop Now →</button>
+                        </div>
+                    </div>
+                    <div class="offer-ban">
+                        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=900&q=75" alt="New Arrivals">
+                        <div class="ob-ov-b"></div>
+                        <div class="ob-circle"></div>
+                        <div class="ob-circle2"></div>
+                        <div class="ob-content">
+                            <div class="ob-badge">✦ Just In</div>
+                            <div class="ob-title">New<br>Arrivals</div>
+                            <div class="ob-sub">Our latest trends & collections<br>are here — Season 2025.</div>
+                            <button class="btn-gold" onclick="showPage('shop')" style="font-size:.68rem;padding:.78rem 2rem">Explore Now →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PRODUCTS -->
+        <section class="section">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Featured Products</span>
+                    <h2 class="sec-title">Most Loved This Season</h2>
+                    <div class="sec-div"></div>
+                    <p class="sec-sub">Handpicked bestsellers loved by thousands of families across Tamil Nadu</p>
+                </div>
+                <div class="prod-grid" id="featuredProds"></div>
+                <div style="text-align:center;margin-top:2.5rem">
+                    <button class="btn-m" onclick="showPage('shop')">View All Products →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESSORIES POSTER SECTION -->
+        <section class="section sec-alt">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Complete Your Look</span>
+                    <h2 class="sec-title">Premium Accessories</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem" id="accPosters"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section" id="about-home" style="padding:5rem 0">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-img-wrap reveal">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80" alt="Our Store" class="about-img">
+                        <div class="about-badge">
+                            <div class="ab-num">25+</div>
+                            <div class="ab-text">Years of Trust</div>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <span class="about-eyebrow">Our Heritage</span>
+                        <h2 class="about-title">Woven with Trust,<br>Dressed in Tradition</h2>
+                        <p class="about-text">Meenatchi Textile Store has been serving customers with quality textiles and excellent service since 1999. Founded in Madurai, near the sacred Meenakshi Amman Temple, we carry the blessings of tradition in every fabric we sell.</p>
+                        <p class="about-text">From pure Kanjivaram silks worn at weddings to comfortable daily cottons, we serve the entire family across all occasions and budgets.</p>
+                        <div class="about-pillars">
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Direct sourcing from Tamil Nadu's master weavers</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Certified pure silk and handloom collections</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Fair & transparent pricing with no hidden costs</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Personalized family shopping experience</div>
+                            </div>
+                        </div>
+                        <button class="btn-m" onclick="showPage('about')">Read Our Full Story →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="section sec-dark">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye" style="color:var(--gl)">Customer Stories</span>
+                    <h2 class="sec-title" style="color:#fff">Loved by 10,000+ Families</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div class="testi-grid">
+                    <div class="testi-card reveal">
+                        <div class="testi-stars">★★★★★</div>
+                        <div class="testi-text">"Meenatchi is our family's go-to for every celebration. The Kanjivaram sarees are unmatched in quality and price. We've been shopping here for over 15 years and every purchase has been a joy!"</div>
+                        <div class="testi-author">
+                            <div class="tauthor-av">LR</div>
+                            <div>
+                                <div class="tauthor-name">Lakshmi Rajagopal</div>
+                                <div class="tauthor-loc">Madurai, Tamil Nadu ✓ Verified</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testi-card reveal">
+                        <div class="testi-stars">★★★★★</div>
+                        <div class="testi-text">"Bought pure silk sarees for my daughter's wedding. The collection was breathtaking and the pricing was fair. The staff treated us like family — absolutely recommend to everyone!"</div>
+                        <div class="testi-author">
+                            <div class="tauthor-av">VM</div>
+                            <div>
+                                <div class="tauthor-name">Venkatesan Murugan</div>
+                                <div class="tauthor-loc">Coimbatore, Tamil Nadu ✓ Verified</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testi-card reveal">
+                        <div class="testi-stars">★★★★★</div>
+                        <div class="testi-text">"Amazing collection for every age group. My children love the kids section, my husband found great kurtas, and I got the most beautiful cotton sarees. All in one store — magical experience!"</div>
+                        <div class="testi-author">
+                            <div class="tauthor-av">PK</div>
+                            <div>
+                                <div class="tauthor-name">Priya Krishnamoorthy</div>
+                                <div class="tauthor-loc">Chennai, Tamil Nadu ✓ Verified</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY PREVIEW -->
+        <section class="section sec-alt" id="gallery-preview">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Our Gallery</span>
+                    <h2 class="sec-title">Moments from Our Store</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div class="gallery-grid reveal">
+                    <div class="gal-item"><img src="family.png" alt="G1" loading="lazy">
+                        <div class="gal-ov"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item"><img src="women buy.png" alt="G2" loading="lazy">
+                        <div class="gal-ov"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item"><img src="grand parents.png" alt="G3" loading="lazy">
+                        <div class="gal-ov"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item"><img src="grand parents.png" alt="G4" loading="lazy">
+                        <div class="gal-ov"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item"><img src="women buy.png" alt="G5" loading="lazy">
+                        <div class="gal-ov"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:2rem"><button class="btn-m" onclick="showPage('gallery')">View
+                        Full Gallery →</button></div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="section">
+            <div class="container">
+                <div class="newsletter-wrap reveal">
+                    <h2 class="nl-title">Stay in the Loop ✦</h2>
+                    <p class="nl-sub">Subscribe for exclusive festive offers, new arrivals, and insider deals straight to your inbox</p>
+                    <div class="nl-form">
+                        <input class="nl-input" type="email" placeholder="Your email address...">
+                        <button class="btn-gold" onclick="showNotif('✅','Subscribed! Welcome to the Meenatchi family!')" style="white-space:nowrap">Subscribe ✦</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PINCODE DELIVERY CHECKER SECTION ═══ -->
+        <section class="section sec-alt" id="pincode-section">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Delivery Checker</span>
+                    <h2 class="sec-title">We Deliver to Your Doorstep</h2>
+                    <div class="sec-div"></div>
+                    <p class="sec-sub" style="margin-top:.8rem">Enter your pincode to check delivery date, shipping cost, and express availability in your area.</p>
+                </div>
+                <div class="pincode-section-card reveal">
+                    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap">
+                        <div style="font-size:2.5rem">🚚</div>
+                        <div>
+                            <div class="pincode-section-title">Check Your Delivery</div>
+                            <p class="pincode-section-sub" style="margin-bottom:0">We ship across Tamil Nadu, Kerala, Karnataka &amp; all major Indian cities.</p>
+                        </div>
+                    </div>
+                    <div class="pincode-section-form">
+                        <input class="pincode-section-input" id="sectionPincodeInput" type="text" maxlength="6" placeholder="Enter your 6-digit pincode…" oninput="this.value=this.value.replace(/[^0-9]/g,'')" onkeydown="if(event.key==='Enter') checkPincodeSection()">
+                        <button class="pincode-section-btn" id="sectionPincodeBtn" onclick="checkPincodeSection()">
+                            🔍 Check Now
+                        </button>
+                    </div>
+                    <div class="pincode-section-result">
+                        <div class="pincode-result" id="sectionPincodeResult"></div>
+                    </div>
+                    <div class="popular-pincodes" style="margin-top:1rem">
+                        <span class="popular-pincodes-label">Try:</span>
+                        <span class="popular-pin-chip" onclick="fillAndCheck('625001')">625001–625022 – Madurai</span>
+                        <span class="popular-pin-chip" onclick="fillAndCheck('600001')"> 600001–600133 – Chennai</span>
+                        <span class="popular-pin-chip" onclick="fillAndCheck('641001')">641001–641050 –
+                            Coimbatore</span>
+                        <span class="popular-pin-chip" onclick="fillAndCheck('620001')">620001–620102 – Trichy</span>
+                        <span class="popular-pin-chip" onclick="fillAndCheck('695001')">695001–695573 –
+                            Trivandrum</span>
+                        <span class="popular-pin-chip" onclick="fillAndCheck('560001')">560001–560111 – Bengaluru</span>
+                    </div>
+                    <!-- Delivery features strip -->
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.8rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--cdd)">
+                        <div style="display:flex;align-items:center;gap:.6rem">
+                            <span style="font-size:1.3rem">📦</span>
+                            <div>
+                                <div style="font-size:.75rem;font-weight:600;color:var(--td)">Same Day</div>
+                                <div style="font-size:.68rem;color:var(--ts)">tenkasi orders before 12 PM</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.6rem">
+                            <span style="font-size:1.3rem">⚡</span>
+                            <div>
+                                <div style="font-size:.75rem;font-weight:600;color:var(--td)">Express Delivery</div>
+                                <div style="font-size:.68rem;color:var(--ts)">TN cities within 1–2 days</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.6rem">
+                            <span style="font-size:1.3rem">🇮🇳</span>
+                            <div>
+                                <div style="font-size:.75rem;font-weight:600;color:var(--td)">Pan India</div>
+                                <div style="font-size:.68rem;color:var(--ts)">Delivery in 3–7 days</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.6rem">
+                            <span style="font-size:1.3rem">🎁</span>
+                            <div>
+                                <div style="font-size:.75rem;font-weight:600;color:var(--td)">Free above ₹999</div>
+                                <div style="font-size:.68rem;color:var(--ts)">No hidden charges</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT / MAP -->
+        <section class="section sec-alt" id="map-section">
+            <div class="container">
+                <div class="sec-header reveal">
+                    <span class="sec-eye">Visit Us</span>
+                    <h2 class="sec-title">Find Our Showroom</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div class="map-card reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2450.728507648486!2d77.44478952180381!3d9.303306900333112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b069340d1b05479%3A0x80ae93151457ea45!2sRayagiri%2C%20Tamil%20Nadu%20627764!5e0!3m2!1sen!2sin!4v1778843144707!5m2!1sen!2sin"
+                        width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-info">
+                        <div>
+                            <div class="map-name">✦ Sri Meenatchi Textile Store</div>
+                            <div class="map-addr">📍107c school street ,rayagiri,tenkasi(dt) – 627764<br>📞 +91 7010325350&nbsp;|&nbsp; ⏰ Mon–Sat: 9 AM – 8 PM &nbsp;|&nbsp; Sun: 10 AM – 6 PM</div>
+                        </div>
+                        <button class="btn-gold" onclick="window.open('https://maps.google.com','_blank')" style="white-space:nowrap">Get Directions →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- end page-home -->
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: SHOP
+═══════════════════════════════════════════════ -->
+    <div id="page-shop" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(200,146,42,.04) 0,rgba(200,146,42,.04) 1px,transparent 0,transparent 50%);background-size:24px 24px"></div>
+            <div class="container" style="position:relative">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff" id="shopTitle">All Products</h1>
+                <p style="color:rgba(245,217,138,.65);margin-top:.5rem;font-size:.85rem">Home / <span id="shopCrumb">Shop</span></p>
+            </div>
+        </div>
+        <div class="container section">
+            <div class="shop-layout">
+                <!-- FILTER SIDEBAR -->
+                <aside class="filter-sidebar">
+                    <div class="filter-title">Filters <span class="filter-clear" onclick="clearFilters()">Clear
+                            All</span></div>
+                    <div class="filter-group">
+                        <span class="filter-label">Categories</span>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Women's Section
+                            <span class="filter-check-count">48</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Men's Section
+                            <span class="filter-check-count">32</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Kids Section
+                            <span class="filter-check-count">24</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Sports Wear
+                            <span class="filter-check-count">18</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Ethnic Wear
+                            <span class="filter-check-count">36</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Fabrics <span
+                                class="filter-check-count">22</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> Accessories
+                            <span class="filter-check-count">15</span></label>
+                    </div>
+                    <div class="filter-group">
+                        <span class="filter-label">Price Range</span>
+                        <input type="range" class="price-range" min="0" max="10000" value="6000" id="priceRange" oninput="updatePrice(this.value)">
+                        <div class="price-vals"><span>₹0</span><span id="priceVal">₹6,000</span></div>
+                    </div>
+                    <div class="filter-group">
+                        <span class="filter-label">Size</span>
+                        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem">
+                            <span onclick="toggleSize(this)" style="padding:.35rem .75rem;border:1px solid var(--cdd);border-radius:6px;font-size:.75rem;cursor:pointer;transition:.2s">XS</span>
+                            <span onclick="toggleSize(this)" style="padding:.35rem .75rem;border:1px solid var(--cdd);border-radius:6px;font-size:.75rem;cursor:pointer;transition:.2s">S</span>
+                            <span onclick="toggleSize(this)" style="padding:.35rem .75rem;border:1px solid var(--cdd);border-radius:6px;font-size:.75rem;cursor:pointer;transition:.2s">M</span>
+                            <span onclick="toggleSize(this)" style="padding:.35rem .75rem;border:1px solid var(--cdd);border-radius:6px;font-size:.75rem;cursor:pointer;transition:.2s">L</span>
+                            <span onclick="toggleSize(this)" style="padding:.35rem .75rem;border:1px solid var(--cdd);border-radius:6px;font-size:.75rem;cursor:pointer;transition:.2s">XL</span>
+                            <span onclick="toggleSize(this)" style="padding:.35rem .75rem;border:1px solid var(--cdd);border-radius:6px;font-size:.75rem;cursor:pointer;transition:.2s">2XL</span>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <span class="filter-label">Color</span>
+                        <div class="color-swatches">
+                            <div class="swatch" style="background:#8B0000" title="Maroon" onclick="this.classList.toggle('active')"></div>
+                            <div class="swatch" style="background:#FF6B6B" title="Rose" onclick="this.classList.toggle('active')"></div>
+                            <div class="swatch" style="background:#C8922A" title="Gold" onclick="this.classList.toggle('active')"></div>
+                            <div class="swatch" style="background:#2D6A4F" title="Green" onclick="this.classList.toggle('active')"></div>
+                            <div class="swatch" style="background:#2C5F8A" title="Blue" onclick="this.classList.toggle('active')"></div>
+                            <div class="swatch" style="background:#5C4A8A" title="Purple" onclick="this.classList.toggle('active')"></div>
+                            <div class="swatch" style="background:#F5F5DC" title="Cream" onclick="this.classList.toggle('active');this.style.border='2px solid var(--g)'"></div>
+                            <div class="swatch" style="background:#FF8C00" title="Orange" onclick="this.classList.toggle('active')"></div>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <span class="filter-label">Rating</span>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> ★★★★★ (5 stars)
+                            <span class="filter-check-count">86</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> ★★★★☆ (4+) <span
+                                class="filter-check-count">124</span></label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> ★★★☆☆ (3+) <span
+                                class="filter-check-count">47</span></label>
+                    </div>
+                    <div class="filter-group">
+                        <span class="filter-label">Availability</span>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> In Stock
+                            Only</label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> On Sale</label>
+                        <label class="filter-check"><input type="checkbox" onchange="filterProducts()"> New
+                            Arrivals</label>
+                    </div>
+                </aside>
+                <!-- PRODUCT MAIN -->
+                <main>
+                    <div class="products-top">
+                        <p class="prod-count" id="shopProdCount">Showing all 24 products</p>
+                        <select class="sort-sel" onchange="sortProducts(this.value)">
+                            <option value="featured">Sort: Featured</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="new">New Arrivals</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                    </div>
+                    <div class="prod-grid" id="shopProds"></div>
+                    <div class="pagination" id="pagination"></div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: OFFERS
+═══════════════════════════════════════════════ -->
+    <div id="page-offers" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">Special Offers</h1>
+                <p style="color:rgba(245,217,138,.65);margin-top:.5rem;font-size:.85rem">Limited time deals curated for you</p>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="sec-header reveal"><span class="sec-eye">Today's Deals</span>
+                    <h2 class="sec-title">Exclusive Offers Await</h2>
+                    <div class="sec-div"></div>
+                </div>
+                <div class="offer-cards">
+                    <div class="offer-card reveal">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=75" alt="Sarees" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Women's Wear</div>
+                            <div class="offer-card-title">Flat 20% Off on Sarees</div>
+                            <div class="offer-card-desc">Kanjivaram, Mysore silk, cotton sarees — all at 20% off this festive season.</div>
+                            <div class="disc-badge">🏷️ Flat 20% Off <span style="font-size:.65rem;opacity:.7;margin-left:.4rem">| Code: SAREE20</span></div>
+                            <button class="btn-gold" onclick="showPage('shop')" style="margin-top:1rem;font-size:.68rem;padding:.7rem 1.5rem">Shop Now →</button>
+                        </div>
+                    </div>
+                    <div class="offer-card reveal">
+                        <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=600&q=75" alt="Kids" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Kids Section</div>
+                            <div class="offer-card-title">Buy 2 Get 1 Free</div>
+                            <div class="offer-card-desc">Buy any 2 kids' outfits and get 1 absolutely free. Dress your little ones in joy!</div>
+                            <div class="disc-badge">🎁 Buy 2 Get 1 <span style="font-size:.65rem;opacity:.7;margin-left:.4rem">| Auto Applied</span></div>
+                            <button class="btn-gold" onclick="showPage('shop','Kids Section')" style="margin-top:1rem;font-size:.68rem;padding:.7rem 1.5rem">Shop Kids →</button>
+                        </div>
+                    </div>
+                    <div class="offer-card reveal">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=75" alt="Sports" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Sports Section</div>
+                            <div class="offer-card-title">Sports Wear Bonanza</div>
+                            <div class="offer-card-desc">Flat discounts on all sportswear, jerseys, and athletic fabrics. Stay active for less!</div>
+                            <div class="disc-badge">⚡ Up to 30% Off <span style="font-size:.65rem;opacity:.7;margin-left:.4rem">| Sports Only</span></div>
+                            <button class="btn-gold" onclick="showPage('shop','Sports Section')" style="margin-top:1rem;font-size:.68rem;padding:.7rem 1.5rem">Shop Sports →</button>
+                        </div>
+                    </div>
+                    <div class="offer-card reveal">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=75" alt="Festive" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Festive Season</div>
+                            <div class="offer-card-title">Festive Collection Sale</div>
+                            <div class="offer-card-desc">Pongal, Diwali, Navratri — celebrate every occasion with our curated festive collection.</div>
+                            <div class="disc-badge">🎉 Up to 40% Off <span style="font-size:.65rem;opacity:.7;margin-left:.4rem">| Festive Pick</span></div>
+                            <button class="btn-gold" onclick="showPage('shop')" style="margin-top:1rem;font-size:.68rem;padding:.7rem 1.5rem">Shop Festive →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: GALLERY
+═══════════════════════════════════════════════ -->
+    <div id="page-gallery" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">Our Gallery</h1>
+                <p style="color:rgba(245,217,138,.65);font-size:.85rem;margin-top:.5rem">Explore our beautiful collections & showroom</p>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem">
+                    <div class="gal-item" style="aspect-ratio:1"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&q=75" alt="Gallery 1" loading="lazy">
+                        <div class="gal-ov"><svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--gl)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item" style="aspect-ratio:1"><img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=500&q=75" alt="Gallery 2" loading="lazy">
+                        <div class="gal-ov"><svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--gl)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item" style="aspect-ratio:1"><img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=500&q=75" alt="Gallery 3" loading="lazy">
+                        <div class="gal-ov"><svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--gl)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item" style="aspect-ratio:1"><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=500&q=75" alt="Gallery 4" loading="lazy">
+                        <div class="gal-ov"><svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--gl)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item" style="aspect-ratio:1"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=75" alt="Gallery 5" loading="lazy">
+                        <div class="gal-ov"><svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--gl)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                    <div class="gal-item" style="aspect-ratio:1"><img src="https://images.unsplash.com/photo-1584868860860-44bf2a1e8c18?w=500&q=75" alt="Gallery 6" loading="lazy">
+                        <div class="gal-ov"><svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color:var(--gl)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════════════ -->
+    <div id="page-about" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">About Us</h1>
+                <p style="color:rgba(245,217,138,.65);font-size:.85rem;margin-top:.5rem">25+ years of weaving trust and tradition</p>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-img-wrap"><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=80" alt="Our Store" class="about-img">
+                        <div class="about-badge">
+                            <div class="ab-num">15+</div>
+                            <div class="ab-text">Years of Service</div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="about-eyebrow">Our Heritage</span>
+                        <h2 class="about-title">A Legacy Woven in Every Thread</h2>
+                        <p class="about-text">Founded in 1999 in the heart of Madurai, just steps from the sacred Meenakshi Amman Temple, Meenatchi Textile Store was born from a simple belief: every family deserves to dress beautifully without compromise.</p>
+                        <p class="about-text">What started as a small storefront with 50 saree designs has grown into one of Tamil Nadu's most beloved textile destinations — with over 500 curated collections spanning every category, occasion, and budget.</p>
+                        <p class="about-text">We source our fabrics directly from the hands of master weavers — Kanjivaram artisans from Kanchipuram, cotton craftsmen from Coimbatore, and block-print artists from Rajasthan — preserving India's textile heritage while making
+                            it accessible to every family.</p>
+                        <div class="about-pillars" style="margin-top:1.5rem">
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Direct farm-to-fabric sourcing from 50+ weaving families</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Certified pure silk hallmark on all premium sarees</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Zero middleman pricing — savings passed to you</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Personalized styling advice from experienced staff</div>
+                            </div>
+                            <div class="pillar">
+                                <div class="pdot"></div>
+                                <div class="ptext">Community-rooted — supporting local artisans since 1999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════════════ -->
+    <div id="page-contact" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">Contact Us</h1>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" id="contactGrid">
+                    <div>
+                        <h2 style="font-family:var(--fs);font-size:2rem;font-weight:800;color:var(--md);margin-bottom:1.5rem">
+                            Get in Touch</h2>
+                        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2rem">
+                            <div style="display:flex;gap:1rem;align-items:flex-start">
+                                <div style="width:44px;height:44px;border-radius:50%;background:rgba(123,29,29,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">
+                                    📍</div>
+                                <div>
+                                    <div style="font-weight:600;color:var(--td);margin-bottom:.3rem">Store Address</div>
+                                    <div style="font-size:.85rem;color:var(--ts);line-height:1.7">45, Sarojini Street, Near Meenakshi Amman Temple,<br>Madurai – 625 001, Tamil Nadu, India</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:1rem;align-items:flex-start">
+                                <div style="width:44px;height:44px;border-radius:50%;background:rgba(123,29,29,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">
+                                    📞</div>
+                                <div>
+                                    <div style="font-weight:600;color:var(--td);margin-bottom:.3rem">Phone Numbers</div>
+                                    <div style="font-size:.85rem;color:var(--ts);line-height:1.7">+91 98765 43210 (Main)
+                                        <br>+91 98765 43211 (WhatsApp)</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:1rem;align-items:flex-start">
+                                <div style="width:44px;height:44px;border-radius:50%;background:rgba(123,29,29,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">
+                                    ✉️</div>
+                                <div>
+                                    <div style="font-weight:600;color:var(--td);margin-bottom:.3rem">Email Address</div>
+                                    <div style="font-size:.85rem;color:var(--ts)">hello@meenatchi-textiles.com</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;gap:1rem;align-items:flex-start">
+                                <div style="width:44px;height:44px;border-radius:50%;background:rgba(123,29,29,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">
+                                    ⏰</div>
+                                <div>
+                                    <div style="font-weight:600;color:var(--td);margin-bottom:.3rem">Store Hours</div>
+                                    <div style="font-size:.85rem;color:var(--ts);line-height:1.7">Mon – Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 6:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-form">
+                        <h3 style="font-family:var(--fs);font-size:1.4rem;font-weight:700;color:var(--md);margin-bottom:1.5rem">
+                            Send Us a Message</h3>
+                        <div class="form-row">
+                            <div class="form-field"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="Lakshmi Devi"></div>
+                            <div class="form-field"><label class="form-label">Phone</label><input id="checkoutPhone" class="form-input" type="tel" placeholder="+91 98765 43210"></div>
+                        </div>
+                        <div class="form-field"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="you@example.com"></div>
+                        <div class="form-field"><label class="form-label">Subject</label><select class="form-input">
+                                <option>Product Enquiry</option>
+                                <option>Order Issue</option>
+                                <option>Return & Exchange</option>
+                                <option>Bulk/Wholesale Order</option>
+                                <option>Other</option>
+                            </select></div>
+                        <div class="form-field"><label class="form-label">Message</label><textarea class="form-input" rows="5" placeholder="Tell us how we can help you..." style="resize:vertical"></textarea></div>
+                        <button class="checkout-submit" onclick="showNotif('✅','Message sent! We\'ll reply within 24 hours.')">Send Message
+                            →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: TRACK ORDERS
+═══════════════════════════════════════════════ -->
+    <div id="page-track" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">Track Your Order</h1>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container" style="max-width:700px">
+                <div class="checkout-form">
+                    <h3 style="font-family:var(--fs);font-size:1.5rem;font-weight:700;color:var(--md);margin-bottom:1.5rem">
+                        Enter Order Details</h3>
+                    <div class="form-field"><label class="form-label">Order Number</label><input class="form-input" type="text" placeholder="e.g. MTS-2025-00142" id="trackOrderNum"></div>
+                    <div class="form-field"><label class="form-label">Email or Phone</label><input class="form-input" type="text" placeholder="Email or mobile number"></div>
+                    <button class="checkout-submit" onclick="trackOrder()">Track Order →</button>
+                </div>
+                <div id="trackResult" style="display:none;margin-top:2rem">
+                    <div class="admin-card">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
+                            <div>
+                                <div style="font-family:var(--fs);font-size:1.2rem;font-weight:700;color:var(--md)">
+                                    Order #MTS-2025-00142</div>
+                                <div style="font-size:.8rem;color:var(--ts);margin-top:.3rem">Placed on 12 May 2025
+                                </div>
+                            </div>
+                            <span class="status-badge status-shipped">📦 Shipped</span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:0;position:relative">
+                            <div style="position:absolute;left:11px;top:12px;bottom:12px;width:2px;background:var(--gold-g)">
+                            </div>
+                            <div id="trackSteps"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: BLOG
+═══════════════════════════════════════════════ -->
+    <div id="page-blog" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">Textile Stories</h1>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem">
+                    <div class="offer-card" style="cursor:pointer">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=75" alt="Blog 1" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Silk Guide</div>
+                            <div class="offer-card-title">How to Identify Pure Kanjivaram Silk</div>
+                            <div class="offer-card-desc">A complete guide to spotting genuine Kanjivaram sarees and avoiding synthetic imitations.</div>
+                            <div style="font-size:.75rem;color:var(--ts)">📅 May 10, 2025 &nbsp;|&nbsp; 5 min read</div>
+                        </div>
+                    </div>
+                    <div class="offer-card" style="cursor:pointer">
+                        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&q=75" alt="Blog 2" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Fashion Tips</div>
+                            <div class="offer-card-title">Best Sarees for Every Occasion in 2025</div>
+                            <div class="offer-card-desc">From casual cotton to grand silk — discover which sarees suit weddings, parties, and daily wear.</div>
+                            <div style="font-size:.75rem;color:var(--ts)">📅 May 5, 2025 &nbsp;|&nbsp; 7 min read</div>
+                        </div>
+                    </div>
+                    <div class="offer-card" style="cursor:pointer">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=75" alt="Blog 3" class="offer-card-img" loading="lazy">
+                        <div class="offer-card-body">
+                            <div class="otag">Heritage</div>
+                            <div class="offer-card-title">The Story of Tamil Nadu's Handloom Industry</div>
+                            <div class="offer-card-desc">Explore the 2000-year history of Tamil weaving traditions and the artisans keeping it alive today.</div>
+                            <div style="font-size:.75rem;color:var(--ts)">📅 April 28, 2025 &nbsp;|&nbsp; 10 min read
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: CHECKOUT
+═══════════════════════════════════════════════ -->
+    <div id="page-checkout" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">Checkout</h1>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="checkout-grid">
+                    <div>
+                        <div class="checkout-form" style="margin-bottom:1.5rem">
+                            <div class="form-section">
+                                <div class="form-section-title">📦 Shipping Address</div>
+                                <div class="form-row">
+                                    <div class="form-field"><label class="form-label">First Name</label><input id="checkoutFirstName" class="form-input" type="text" placeholder="Priya"></div>
+                                    <div class="form-field"><label class="form-label">Last Name</label><input id="checkoutLastName" class="form-input" type="text" placeholder="Devi"></div>
+                                </div>
+                                <div class="form-field"><label class="form-label">Email Address</label><input id="checkoutEmail" class="form-input" type="email" placeholder="priya@example.com"></div>
+                                <div class="form-field"><label class="form-label">Phone Number</label><input id="checkoutPhone" class="form-input" type="tel" placeholder="+91 98765 43210"></div>
+                                <div class="form-field"><label class="form-label">Full Address</label><textarea id="checkoutAddress" class="form-input" rows="3" placeholder="Flat/House No, Street, Area..."></textarea></div>
+                                <div class="form-row">
+                                    <div class="form-field"><label class="form-label">City</label><input id="checkoutCity" class="form-input" type="text" placeholder="Madurai"></div>
+                                    <div class="form-field"><label class="form-label">State</label><select class="form-input">
+                                            <option>Tamil Nadu</option>
+                                            <option>Kerala</option>
+                                            <option>Karnataka</option>
+                                            <option>Andhra Pradesh</option>
+                                            <option>Maharashtra</option>
+                                        </select></div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-field"><label class="form-label">PIN Code</label><input id="checkoutPin" class="form-input" type="text" placeholder="625001"></div>
+                                    <div class="form-field"><label class="form-label">Country</label><input class="form-input" value="India" readonly></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-form">
+                            <div class="form-section-title" style="font-family:var(--fs);font-size:1.2rem;font-weight:700;color:var(--md);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--cdd)">
+                                💳 Payment Method</div>
+                            <div class="pay-methods">
+                                <div class="pay-method active" data-type="upi" onclick="selectPay(this)">
+                                    <div class="pay-method-icon">📱</div>
+                                    <div>
+                                        <div class="pay-method-name">PhonePe / UPI</div>
+                                        <div style="font-size:.7rem;color:var(--ts)">Scan QR & Pay instantly</div>
+                                    </div>
+                                </div>
+                                <div class="pay-method" data-type="cod" onclick="selectPay(this)">
+                                    <div class="pay-method-icon">💵</div>
+                                    <div>
+                                        <div class="pay-method-name">Cash on Delivery</div>
+                                        <div style="font-size:.7rem;color:var(--ts)">Pay when delivered</div>
+                                    </div>
+                                </div>
+                                <div class="pay-method" data-type="bank" onclick="selectPay(this)">
+                                    <div class="pay-method-icon">🏦</div>
+                                    <div>
+                                        <div class="pay-method-name">Bank Transfer</div>
+                                        <div style="font-size:.7rem;color:var(--ts)">NEFT / RTGS</div>
+                                    </div>
+                                </div>
+                                <div class="pay-method" data-type="card" onclick="selectPay(this)">
+                                    <div class="pay-method-icon">💳</div>
+                                    <div>
+                                        <div class="pay-method-name">Credit / Debit Card</div>
+                                        <div style="font-size:.7rem;color:var(--ts)">All major cards</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- UPI QR Payment Box -->
+                            <div id="upiPayBox" style="display:block;margin:1.2rem 0;border:2px solid #6b21a8;border-radius:16px;padding:1.5rem;text-align:center;background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+                                <div style="font-size:1rem;font-weight:700;color:#6b21a8;margin-bottom:.5rem">📱 Scan & Pay with PhonePe / Any UPI App</div>
+                                <div style="font-size:.8rem;color:#555;margin-bottom:1rem">UPI ID: <strong>7010325350@ybl</strong></div>
+                                <img src="phonepe_qr.jpeg.jpeg" alt="PhonePe QR Code" style="width:220px;height:220px;object-fit:cover;object-position:center;border-radius:12px;border:3px solid #6b21a8">
+                                <div style="font-size:.75rem;color:#6b21a8;margin-top:.8rem;font-weight:600">HARISH — Sri Meenatchi Textile Store</div>
+                                <div style="margin-top:1rem">
+                                    <label style="font-size:.82rem;font-weight:600;color:#333;display:block;margin-bottom:.4rem">Enter UTR / Transaction ID after payment:</label>
+                                    <input id="utrInput" class="form-input" type="text" placeholder="e.g. 426789123456" style="text-align:center;font-size:.9rem">
+                                </div>
+                            </div>
+
+                            <button class="checkout-submit" onclick="placeOrder()">🔒 Place Order Securely →</button>
+                            <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;font-size:.72rem;color:var(--ts)">
+                                🔒 256-bit SSL Secured &nbsp;|&nbsp; Your data is safe</div>
+                        </div>
+                    </div>
+                    <div class="checkout-summary">
+                        <div style="font-family:var(--fs);font-size:1.2rem;font-weight:700;color:var(--md);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--cdd)">
+                            Order Summary</div>
+                        <div id="checkoutItems" style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--cdd)"></div>
+                        <div class="cs-row"><span>Subtotal</span><span id="coSubtotal">₹0</span></div>
+                        <div class="cs-row"><span>Discount</span><span style="color:#2d8a4e" id="coDiscount">-₹0</span>
+                        </div>
+                        <div class="cs-row"><span>Shipping</span><span id="coShipping">₹50</span></div>
+                        <div class="cs-row"><span>GST (5%)</span><span id="coGST">₹0</span></div>
+                        <div class="cs-row total"><span>Total Payable</span><span id="coTotal" style="color:var(--m)">₹0</span></div>
+                        <div class="gst-note">* GST included in product prices as per CGST rules</div>
+                        <div style="margin-top:1rem;padding:1rem;background:rgba(200,146,42,.07);border-radius:var(--r8);border:1px solid rgba(200,146,42,.2)">
+                            <div style="font-size:.75rem;font-weight:600;color:var(--g);margin-bottom:.4rem">🎫 Coupon Applied
+                            </div>
+                            <div style="font-size:.78rem;color:var(--ts)" id="couponDisplay">No coupon applied</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: ORDER SUCCESS
+═══════════════════════════════════════════════ -->
+    <div id="page-success" class="page-section">
+        <section class="section">
+            <div class="order-success">
+                <div class="os-icon">🎉</div>
+                <h1 class="os-title">Order Placed Successfully!</h1>
+                <p class="os-sub">Thank you for shopping with Meenatchi Textile Store! Your order has been confirmed and is being processed by our team. You'll receive an SMS and email confirmation shortly.</p>
+                <div class="os-num">Order Number: <strong>#MTS-2025-<span id="orderNum"></span></strong></div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                    <button class="btn-gold" onclick="showPage('track')">Track My Order →</button>
+                    <button class="btn-m" onclick="showPage('home')">Continue Shopping</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     PAGE: WISHLIST
+═══════════════════════════════════════════════ -->
+    <div id="page-wishlist" class="page-section">
+        <div style="background:var(--nav-bg);padding:2.5rem 0">
+            <div class="container">
+                <button class="back-btn" onclick="goBack()">← Back</button>
+                <h1 style="font-family:var(--fs);font-size:2.5rem;font-weight:900;color:#fff">My Wishlist</h1>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="prod-grid" id="wishlistGrid"></div>
+                <div id="wishlistEmpty" style="display:none;text-align:center;padding:3rem">
+                    <div style="font-size:3rem;margin-bottom:1rem">♡</div>
+                    <p style="color:var(--ts);margin-bottom:1.5rem">Your wishlist is empty</p>
+                    <button class="btn-gold" onclick="showPage('shop')">Browse Products →</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+    <footer class="footer" id="mainFooter">
+        <div class="footer-pattern"></div>
+        <div class="container" style="position:relative;z-index:1">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand-name">✦ Meenatchi Textile Store ✦</div>
+                    <div class="footer-brand-tag">Quality Fabrics, Trusted for Generations</div>
+                    <div class="footer-brand-desc">South India's premier family textile destination. Serving 10,000+ families across Tamil Nadu with premium fabrics, honest pricing, and a shopping experience rooted in tradition since 1999.</div>
+                    <div class="fsocial">
+                        <a class="fsoc-btn" href="#" title="Facebook">f</a>
+                        <a class="fsoc-btn" href="#" title="Instagram" style="font-size:.75rem">📷</a>
+                        <a class="fsoc-btn" href="#" title="YouTube">▶</a>
+                        <a class="fsoc-btn" href="https://wa.me/919876543210" title="WhatsApp" target="_blank" style="font-size:.8rem">💬</a>
+                        <a class="fsoc-btn" href="#" title="Pinterest" style="font-size:.75rem">📌</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="fc-title">Quick Links</div>
+                    <span class="flink" onclick="showPage('home')">Home</span>
+                    <span class="flink" onclick="showPage('about')">About Us</span>
+                    <span class="flink" onclick="showPage('offers')">Offers</span>
+                    <span class="flink" onclick="showPage('gallery')">Gallery</span>
+                    <span class="flink" onclick="showPage('blog')">Blog</span>
+                    <span class="flink" onclick="showPage('contact')">Contact</span>
+                    <span class="flink" onclick="showPage('track')">Track Order</span>
+                </div>
+                <div>
+                    <div class="fc-title">Categories</div>
+                    <span class="flink" onclick="showPage('shop','Women\'s Section')">Women's Section</span>
+                    <span class="flink" onclick="showPage('shop','Men\'s Section')">Men's Section</span>
+                    <span class="flink" onclick="showPage('shop','Kids Section')">Kids Section</span>
+                    <span class="flink" onclick="showPage('shop','Sports Section')">Sports Section</span>
+                    <span class="flink" onclick="showPage('shop','Ethnic Wear')">Ethnic Wear</span>
+                    <span class="flink" onclick="showPage('shop','Fabrics')">Fabrics</span>
+                    <span class="flink" onclick="showPage('shop','Accessories')">Accessories</span>
+                </div>
+                <div>
+                    <div class="fc-title">Customer Care</div>
+                    <span class="flink">Track My Order</span>
+                    <span class="flink">Returns & Exchanges</span>
+                    <span class="flink">Size Guide</span>
+                    <span class="flink">Shipping Info</span>
+                    <span class="flink">Privacy Policy</span>
+                    <span class="flink">Terms of Service</span>
+                    <span class="flink">Refund Policy</span>
+                </div>
+                <div>
+                    <div class="fc-title">Contact Details</div>
+                    <div class="fcontact-item">
+                        <div class="fci-icon">📍</div>
+                        <div class="fci-text">107c,shool street rayagiri,tenkasi(dt) – 627764 , Tamil Nadu</div>
+                    </div>
+                    <div class="fcontact-item">
+                        <div class="fci-icon">📞</div>
+                        <div class="fci-text">+91 7010325350<br>+91 9994283358</div>
+                    </div>
+                    <div class="fcontact-item">
+                        <div class="fci-icon">✉️</div>
+                        <div class="fci-text">harishselvaraj56@gmail.com</div>
+                    </div>
+                    <div class="fcontact-item">
+                        <div class="fci-icon">⏰</div>
+                        <div class="fci-text">Mon – Sat: 9 AM – 8 PM<br>Sun: 10 AM – 6 PM</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="fcopy">© 2025 Meenatchi Textile Store. All Rights Reserved. Made with ♥ in Tamil Nadu, India.
+                </div>
+                <div class="fcopy-links">
+                    <span class="fcopy-link">Privacy Policy</span>
+                    <span class="fcopy-link">Terms of Use</span>
+                    <span class="fcopy-link">Sitemap</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
