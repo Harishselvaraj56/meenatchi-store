@@ -22,7 +22,7 @@ router.get('/', async(req, res) => {
         // If image is a local file (not http), point to uploads folder
         if (p.img && !p.img.startsWith('http')) {
             p = p.toObject();
-            p.img = `http://localhost:5000/uploads/${p.img}`;
+            p.img = `/uploads/${p.img}`;
         }
         return p;
     });
